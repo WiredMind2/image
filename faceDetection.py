@@ -3,7 +3,7 @@
 from pygame import camera
 import pygame
 import time
-import cv
+import cv2 as cv
 import os
 
 

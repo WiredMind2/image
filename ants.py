@@ -59,7 +59,7 @@ pygame.init()
 screen = pygame.display.set_mode((1000,1000))
 
 ants = []
-for i in range(1):
+for i in range(100):
     ants.append(Ant(screen))
 
 running = True

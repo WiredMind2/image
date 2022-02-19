@@ -104,7 +104,7 @@ class SlimesAnim():
 
         self.running = True
         while self.running:
-            #pygame.time.wait(int(1/60*1000))
+            # pygame.time.wait(int(1/60*1000))
             self.update()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -140,13 +140,14 @@ class SlimesAnim():
             else:
                 self.slimes.remove(s)
 
+        self.display.fill((0,0,0,0))
+        self.display.blit(self.screen,(0,0))
+        pygame.display.flip()
+
         if self.record:
             pygame.image.save(self.screen.convert_alpha(),os.path.join(self.folder, "image{}.png".format(self.lastindex)))
             self.video.write(cv2.imread(os.path.join(self.folder, "image{}.png".format(self.lastindex))))
             
             self.lastindex += 1
-        self.display.fill((0,0,0,0))
-        self.display.blit(self.screen,(0,0))
-        pygame.display.flip()
 
 s = SlimesAnim(0,10,1000,True,"C:/Users/willi/Pictures/background/")
