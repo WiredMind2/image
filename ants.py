@@ -4,17 +4,18 @@ from random import randint
 from time import sleep
 
 def distanceSqr(a,b):
-    print(a)
-    print(b)
+    # print(a)
+    # print(b)
     return (b[0] - a[0])**2 + (b[1] - a[1])**2
     
 
 def closest(coords,pos):
-    closest = None
+    closest, dist = None, None
     for c in coords:
         distance = distanceSqr(c,pos)
-        if closest == None or distance < closest:
+        if closest == None or distance < dist:
             closest = c
+            dist = distance
     return closest
 
 class Ant():
@@ -38,9 +39,13 @@ class Ant():
 
         if best != None and distanceSqr(best,(self.x,self.y)) <= self.followDistance**2:
             self.rot = atan((best[1] - self.y)/(best[0] - self.x)) 
-            self.food_markers.append((x,y))
+            self.food_markers.append((self.x,self.y))
         else:
             self.state = "wander"
+            
+        if self.x <= 10:
+            # self.food_markers.append((randint(1, 9), randint(1, self.screen.get_height())))
+            self.state = "home"
 
         x_pos, y_pos = cos(self.rot)*self.speed, sin(self.rot)*self.speed
         self.x += x_pos

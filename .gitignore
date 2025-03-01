@@ -1,4 +1,10 @@
 *.avi
 *.mp4
 *.gif
-__pycache__/**
+**/__pycache__
+background
+lfw_funneled
+libvlc/
+cache.pkl
+model.png
+Stable Diffusion/*.png

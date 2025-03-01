@@ -1,5 +1,6 @@
 import os
 import subprocess
+from tkinter import filedialog
 
 class ImageEditor:
     def __init__(self, path) -> None:
@@ -49,10 +50,10 @@ class VideoEditor:
 
             path = path + ext
 
-        subprocess.call(['ffmpeg', *self.cmd_args, '-ss', timestamp, '-i', self.media_path, '-vframes', '1', path])
+        subprocess.call(['ffmpeg', *self.cmd_args, '-ss', str(timestamp), '-i', self.media_path, '-vframes', '1', path])
 
 if __name__ == '__main__':
     # path = input('File path: ')
-    path = 'C:/Users/willi/Documents/Python/internet/insta_data/stories/an_aaaangel/1656666450-2872648867873890723.mp4'
+    path = filedialog.askopenfilename(filetypes=[('Video', ('.mp4', '.mov', '.avi'))])
     editor = VideoEditor(path)
     editor.save_frame(2, ext='jpg')

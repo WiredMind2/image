@@ -150,4 +150,7 @@ class SlimesAnim():
             
             self.lastindex += 1
 
-s = SlimesAnim(0,10,1000,True,"C:/Users/willi/Pictures/background/")
+path = os.path.join(os.path.dirname(__file__), "background")
+if not os.path.exists(path):
+    os.makedirs(path)
+s = SlimesAnim(0,10,1000,True,path)
